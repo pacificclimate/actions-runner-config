@@ -1,0 +1,39 @@
+version: '2.3'
+
+services:
+  worker:
+    image: myoung34/github-runner:latest
+    container_name: pdp-runner
+    environment:
+      REPO_URL: https://github.com/pacificclimate/pdp
+      RUNNER_NAME: pdp-runner
+      # token comes from the actions runner page on github
+      RUNNER_TOKEN: ${RUNNER_TOKEN}
+      RUNNER_WORKDIR: /storage/data/projects/comp_support/gh_actions/_work
+      ORG_RUNNER: 'false'
+      LABELS: linux,x64,gpu
+    env_file:
+      - pdp.env
+    security_opt:
+      # needed on SELinux systems to allow docker container to manage other docker containers
+      - label:disable
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /storage/data/projects/comp_support/gh_actions/:/storage/data/projects/comp_support/gh_actions/
+      # note: a quirk of docker-in-docker is that this path
+      # needs to be the same path on host and inside the container,
+      # docker mgmt cmds run outside of docker but expect the paths from within
+
+      # Data mounts
+      - /storage/data/climate/downscale:/storage/data/climate/downscale:ro
+      - /storage/data/climate/hydrology:/storage/data/climate/hydrology:ro
+      - /storage/data/climate/observations:/storage/data/climate/observations:ro
+      - /storage/data/climate/PRISM:/storage/data/climate/PRISM:ro
+      - /storage/data/projects/dataportal:/storage/data/projects/dataportal:ro
+      - /storage/data/projects/hydrology:/storage/data/projects/hydrology:ro
+      - /storage/data/projects/PRISM:/storage/data/projects/PRISM:ro
+
+networks:
+  default:
+    external:
+      name: pcicbr0
