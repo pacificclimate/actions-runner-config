@@ -8,7 +8,7 @@ services:
       REPO_URL: https://github.com/pacificclimate/pdp
       RUNNER_NAME: pdp-runner
       # token comes from the actions runner page on github
-      RUNNER_TOKEN: ${RUNNER_TOKEN}
+      RUNNER_TOKEN: TOKEN
       RUNNER_WORKDIR: /storage/data/projects/comp_support/gh_actions/_work
       ORG_RUNNER: 'false'
       LABELS: linux,x64,gpu
