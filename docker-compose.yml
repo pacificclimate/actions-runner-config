@@ -5,7 +5,7 @@ services:
     image:
     container_name: pdp-runner
     env_file:
-      - pdp.env
+      - ./envs/pdp.env
     security_opt:
       # needed on SELinux systems to allow docker container to manage other docker containers
       - label:disable
