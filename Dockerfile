@@ -2,8 +2,7 @@ FROM debian:buster-slim
 
 ARG GITHUB_RUNNER_VERSION="2.278.0"
 
-ENV RUNNER_NAME "runner"
-ENV GITHUB_PAT ""
+ENV RUNNER_NAME "pcic-runner"
 ENV GITHUB_OWNER "pacificclimate"
 ENV GITHUB_REPOSITORY "pdp"
 ENV RUNNER_TOKEN ""
