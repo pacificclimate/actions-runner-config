@@ -2,8 +2,8 @@ version: '2.3'
 
 services:
   worker:
-    image:
-    container_name: pdp-runner
+    image: pcic/actions-runner:latest
+    container_name: actions-runner
     env_file:
       - ./envs/pdp.env
     security_opt:
