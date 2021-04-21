@@ -6,7 +6,7 @@ ENV RUNNER_NAME "runner"
 ENV GITHUB_PAT ""
 ENV GITHUB_OWNER "pacificclimate"
 ENV GITHUB_REPOSITORY "pdp"
-ENV RUNNER_WORKDIR "_work"
+ENV RUNNER_WORKDIR "/storage/data/projects/comp_support/gh_actions/_work"
 
 RUN apt-get update && \
     apt-get install -y \
