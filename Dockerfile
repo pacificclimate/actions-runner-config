@@ -7,6 +7,7 @@ ENV GITHUB_OWNER "pacificclimate"
 ENV GITHUB_REPOSITORY "pdp"
 ENV RUNNER_TOKEN ""
 ENV RUNNER_WORKDIR "/storage/data/projects/comp_support/gh_actions/_work"
+ENV RUNNER_ALLOW_RUNASROOT="1"
 
 RUN apt-get update && \
     apt-get install -y \
