@@ -1,6 +1,6 @@
 #!/bin/sh
 ./config.sh \
-    --name ${RUNNER_NAME} \
+    --name "actions-runner" \
     --token ${RUNNER_TOKEN} \
     --url https://github.com/${GITHUB_OWNER}/${GITHUB_REPOSITORY} \
     --work ${RUNNER_WORKDIR} \
