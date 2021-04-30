@@ -1,10 +1,14 @@
-FROM debian:buster
+FROM ubuntu:20.04
 
-ARG RUNNER_VERSION="2.278.0"
-
-ENV RUNNER_TOKEN ""
+# Variables
+ENV RUNNER_VERSION="2.278.0"
 ENV GITHUB_OWNER "pacificclimate"
 ENV GITHUB_REPOSITORY "pdp"
+ENV RUNNER_TOKEN "token goes here"
+
+# Setup TZ
+RUN apt-get update
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 
 RUN apt-get update \
     && apt-get install -y \
@@ -14,9 +18,8 @@ RUN apt-get update \
         jq \
         tar \
         gnupg2 \
-        python \
         apt-transport-https \
-        ca-certificates  \
+        ca-certificates \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -24,7 +27,7 @@ RUN useradd -m github && \
     usermod -aG sudo github && \
     echo "%sudo ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-#setup docker runner
+# Setup docker runner
 RUN curl -sSL https://get.docker.com/ | sh
 RUN usermod -aG docker github
 
