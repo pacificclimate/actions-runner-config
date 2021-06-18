@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
 # Variables
 ENV RUNNER_VERSION="2.278.0"
